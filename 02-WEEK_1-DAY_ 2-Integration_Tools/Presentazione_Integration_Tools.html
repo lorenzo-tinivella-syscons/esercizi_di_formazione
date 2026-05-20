@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrazione Aziendale: Architetture a Confronto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --primary: #3b82f6; /* Blue - ESB */
+            --secondary: #10b981; /* Green - ETL */
+            --accent: #f59e0b; /* Orange - EDA */
+            --purple: #8b5cf6; /* Purple - SOA */
+            --teal: #14b8a6; /* Teal - EAI */
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Slide / Section Style */
+        section {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 60px;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 6px; height: 100%;
+        }
+
+        /* Titoli */
+        h1 { font-family: 'Poppins', sans-serif; font-size: 3.5rem; text-align: center; margin-bottom: 20px; line-height: 1.2; }
+        h2 { font-family: 'Poppins', sans-serif; font-size: 2.2rem; margin-bottom: 25px; display: flex; align-items: center; gap: 15px; }
+        h3 { color: var(--text-main); margin-bottom: 10px; font-size: 1.4rem; }
+        h4 { color: var(--text-main); margin-top: 15px; font-size: 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; }
+
+        .intro-p { text-align: center; font-size: 1.2rem; color: var(--text-dim); max-width: 900px; margin: 0 auto 60px; }
+        .description { font-size: 1.05rem; color: #cbd5e1; margin-bottom: 20px; }
+
+        /* Griglie e Card */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .feature-list { list-style: none; margin-top: 20px; }
+        .feature-list li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px; color: var(--text-dim); font-size: 1rem; }
+        .feature-list li i { color: inherit; margin-top: 5px; }
+        .feature-list strong { color: var(--text-main); }
+
+        /* Diagrammi CSS */
+        .visual-box {
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            height: 100%;
+            min-height: 300px;
+        }
+
+        /* Colori Sezioni */
+        #eai::before { background: var(--teal); } #eai h2 { color: var(--teal); }
+        #soa::before { background: var(--purple); } #soa h2 { color: var(--purple); }
+        #eda::before { background: var(--accent); } #eda h2 { color: var(--accent); }
+        #esb::before { background: var(--primary); } #esb h2 { color: var(--primary); }
+        #etl::before { background: var(--secondary); } #etl h2 { color: var(--secondary); }
+
+        /* Table */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 1rem; }
+        th { text-align: left; padding: 18px; background: rgba(255,255,255,0.05); color: var(--text-main); border-bottom: 2px solid rgba(255,255,255,0.1); }
+        td { padding: 18px; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text-dim); }
+        td strong { color: var(--text-main); }
+
+        /* Esempio Finale */
+        .flow-container { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
+        .flow-step {
+            background: rgba(255,255,255,0.03);
+            padding: 25px;
+            border-radius: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            border-left: 4px solid var(--text-dim);
+        }
+        .flow-step i { font-size: 2rem; margin-top: 5px; width: 40px; text-align: center; }
+        .flow-step p { margin-top: 5px; color: var(--text-dim); }
+
+        @media (max-width: 950px) { .grid { grid-template-columns: 1fr; } .visual-box { min-height: 200px; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Architetture di Integrazione Aziendale</h1>
+        <p class="intro-p">Analisi tecnica ed esaustiva di EAI, SOA, EDA, ESB e ETL: i layer fondamentali per orchestrare ecosistemi software complessi, abbattere i silos di dati e garantire la scalabilità dell'impresa digitale.</p>
+    </header>
+
+    <section id="eai">
+        <div class="grid">
+            <div>
+                <h2><i class="fa-solid fa-network-wired"></i> EAI</h2>
+                <h3>Enterprise Application Integration</h3>
+                <p class="description">L'EAI è una strategia architettonica e metodologica volta a colmare il divario tra applicazioni eterogenee (es. ERP, CRM, SCM, mainframe legacy) progettate per lavorare isolatamente. L'obiettivo è automatizzare i processi di business end-to-end garantendo la consistenza dei dati su tutta l'infrastruttura.</p>
+                <h4>Punti Chiave Tecnici</h4>
+                <ul class="feature-list">
+                    <li><i class="fa-solid fa-code-branch"></i> <strong>Topologia Hub-and-Spoke:</strong> Sostituisce l'insostenibile architettura "punto-punto" centralizzando la logica di integrazione in un hub principale.</li>
+                    <li><i class="fa-solid fa-database"></i> <strong>Data Consistency:</strong> Propaga i cambiamenti di stato di un'entità (es. anagrafica cliente) in tempo reale su tutti i sistemi interessati.</li>
+                    <li><i class="fa-solid fa-gears"></i> <strong>Business Process Management:</strong> Spesso include motori di orchestrazione per governare flussi transazionali a lungo termine.</li>
+                </ul>
+            </div>
+            <div class="visual-box">
+                <i class="fa-solid fa-hubspot" style="font-size: 120px; color: var(--teal);"></i>
+            </div>
+        </div>
+    </section>
+
+    <section id="soa">
+        <div class="grid">
+            <div class="visual-box">
+                <i class="fa-solid fa-cubes" style="font-size: 120px; color: var(--purple);"></i>
+            </div>
+            <div>
+                <h2><i class="fa-solid fa-puzzle-piece"></i> SOA</h2>
+                <h3>Service-Oriented Architecture</h3>
+                <p class="description">La SOA è uno stile architetturale che struttura le applicazioni come un insieme di servizi software debolmente accoppiati (loosely coupled). Invece di software monolitici, l'azienda espone le proprie capacità di business tramite interfacce governate e standardizzate.</p>
+                <h4>Punti Chiave Tecnici</h4>
+                <ul class="feature-list">
+                    <li><i class="fa-solid fa-file-signature"></i> <strong>Contratti di Servizio:</strong> La comunicazione avviene tramite contratti espliciti (es. WSDL per SOAP o OpenAPI per REST), nascondendo la logica implementativa.</li>
+                    <li><i class="fa-solid fa-recycle"></i> <strong>Discoverability & Riuso:</strong> I servizi sono catalogati in un registro e possono essere combinati per creare nuove applicazioni (Composite Applications).</li>
+                    <li><i class="fa-solid fa-shield-halved"></i> <strong>Governance:</strong> Centralizza le policy di sicurezza, versioning e controllo degli accessi ai servizi.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="eda">
+        <div class="grid">
+            <div>
+                <h2><i class="fa-solid fa-bolt"></i> EDA</h2>
+                <h3>Event-Driven Architecture</h3>
+                <p class="description">Un paradigma architetturale asincrono in cui i componenti del sistema reagiscono alla produzione di "Eventi" (cambiamenti di stato significativi). Ribalta il modello tradizionale request/response: chi produce il dato non interroga chi deve consumarlo, ma lo pubblica semplicemente sul canale.</p>
+                <h4>Punti Chiave Tecnici</h4>
+                <ul class="feature-list">
+                    <li><i class="fa-solid fa-tower-broadcast"></i> <strong>Publish/Subscribe:</strong> I "Producer" inviano eventi a un Event Broker (es. Apache Kafka), il quale li smista in push ai "Consumer" iscritti al topic.</li>
+                    <li><i class="fa-solid fa-scissors"></i> <strong>Disaccoppiamento Spaziale e Temporale:</strong> Produttori e consumatori non devono essere online contemporaneamente, prevenendo blocchi a cascata.</li>
+                    <li><i class="fa-solid fa-arrow-trend-up"></i> <strong>Scalabilità Massiva:</strong> Ideale per flussi di dati ad altissima frequenza (IoT, micro-transazioni, log analysis).</li>
+                </ul>
+            </div>
+            <div class="visual-box">
+                <i class="fa-solid fa-tower-broadcast" style="font-size: 120px; color: var(--accent);"></i>
+            </div>
+        </div>
+    </section>
+
+    <section id="esb">
+        <div class="grid">
+            <div class="visual-box">
+                <i class="fa-solid fa-bus" style="font-size: 120px; color: var(--primary);"></i>
+            </div>
+            <div>
+                <h2><i class="fa-solid fa-route"></i> ESB</h2>
+                <h3>Enterprise Service Bus</h3>
+                <p class="description">L'ESB è l'infrastruttura middleware concreta che implementa i principi di SOA ed EAI. Funge da "bus" di comunicazione virtuale garantendo che applicazioni costruite su stack tecnologici incompatibili possano scambiarsi messaggi in modo sicuro ed efficiente.</p>
+                <h4>Punti Chiave Tecnici (Pattern VETO)</h4>
+                <ul class="feature-list">
+                    <li><i class="fa-solid fa-check-double"></i> <strong>Validate:</strong> Verifica che il messaggio in ingresso rispetti gli schemi prefissati (es. XSD).</li>
+                    <li><i class="fa-solid fa-plus-circle"></i> <strong>Enrich:</strong> Aggiunge ai messaggi informazioni mancanti prelevandole da database esterni prima dell'inoltro.</li>
+                    <li><i class="fa-solid fa-language"></i> <strong>Transform & Route:</strong> Esegue il mapping dei dati (es. converte XML legacy in JSON) e instrada il payload in base al contenuto (Content-Based Routing).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="etl">
+        <div class="grid">
+            <div>
+                <h2><i class="fa-solid fa-filter"></i> ETL</h2>
+                <h3>Extract, Transform, Load</h3>
+                <p class="description">L'ETL è il processo architetturale dedicato all'integrazione massiva di dati per scopi analitici. Mentre ESB e SOA gestiscono i flussi operativi (OLTP), l'ETL consolida storicamente le informazioni spostandole verso sistemi di analisi (OLAP) come Data Warehouse o Data Lake.</p>
+                <h4>Punti Chiave Tecnici</h4>
+                <ul class="feature-list">
+                    <li><i class="fa-solid fa-file-export"></i> <strong>Extract:</strong> Estrazione periodica da fonti eterogenee (RDBMS, NoSQL, API esterne, file flat).</li>
+                    <li><i class="fa-solid fa-wand-magic-sparkles"></i> <strong>Transform:</strong> Fase computazionalmente intensiva che include pulizia (data cleansing), deduplicazione, aggregazione e applicazione di regole di business.</li>
+                    <li><i class="fa-solid fa-database"></i> <strong>Load:</strong> Inserimento dei dati normalizzati nei sistemi target. Spesso eseguito in modalità "Batch" nelle ore notturne per non impattare le performance operative.</li>
+                </ul>
+            </div>
+            <div class="visual-box">
+                <i class="fa-solid fa-database" style="font-size: 120px; color: var(--secondary);"></i>
+            </div>
+        </div>
+    </section>
+
+    <section style="border-top: 8px solid var(--text-main);">
+        <h2><i class="fa-solid fa-table-list"></i> Matrice Comparativa Architetturale</h2>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Paradigma</th>
+                        <th>Natura della Comunicazione</th>
+                        <th>Grado di Accoppiamento</th>
+                        <th>Dominio di Applicazione Ideale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>EAI</strong></td>
+                        <td>Sincrona / Asincrona</td>
+                        <td>Medio/Alto (tramite Hub)</td>
+                        <td>Integrazione di sistemi Legacy, automazione processi di back-office.</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: var(--purple);">SOA</strong></td>
+                        <td>Sincrona (Request/Reply)</td>
+                        <td>Medio (vincolato dal Contratto API)</td>
+                        <td>Esposizione di funzionalità di business standardizzate (es. gateway di pagamento).</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: var(--accent);">EDA</strong></td>
+                        <td>Strettamente Asincrona</td>
+                        <td>Basso (Eventual Consistency)</td>
+                        <td>Sistemi ad alto throughput, notifiche real-time, microservizi reattivi.</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: var(--primary);">ESB</strong></td>
+                        <td>Infrastrutturale (Message-Oriented)</td>
+                        <td>N/A (Fornisce il disaccoppiamento)</td>
+                        <td>Mediazione di protocolli, orchestrazione e routing centralizzato tra servizi eterogenei.</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: var(--secondary);">ETL</strong></td>
+                        <td>Batch / Micro-Batch</td>
+                        <td>N/A (Orientato ai Dati, non ai servizi)</td>
+                        <td>Popolamento di Data Warehouse, Business Intelligence, Data Mining.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section style="border-top: 8px solid var(--primary);">
+        <h2><i class="fa-solid fa-gears"></i> Scenario Operativo: Workflow di un E-commerce</h2>
+        <p class="description">Come le tecnologie operano sinergicamente all'interno della stessa transazione aziendale:</p>
+        <div class="flow-container">
+            <div class="flow-step" style="border-left-color: var(--accent);">
+                <i class="fa-solid fa-bolt" style="color:var(--accent)"></i>
+                <div>
+                    <h4>1. Generazione dell'Evento (EDA)</h4>
+                    <p>Il frontend dell'e-commerce pubblica un evento <code>OrderPlaced</code> sull'Event Broker. Il thread dell'utente viene liberato immediatamente senza attendere l'elaborazione dei backend successivi.</p>
+                </div>
+            </div>
+            <div class="flow-step" style="border-left-color: var(--primary);">
+                <i class="fa-solid fa-bus" style="color:var(--primary)"></i>
+                <div>
+                    <h4>2. Mediazione Infrastrutturale (ESB)</h4>
+                    <p>L'ESB intercetta il messaggio. Utilizzando il pattern "Content-Based Router", identifica il formato JSON in entrata, lo valida e lo trasforma in due payload distinti: uno XML per il vecchio WMS (Warehouse Management System) e una chiamata REST per la fatturazione.</p>
+                </div>
+            </div>
+            <div class="flow-step" style="border-left-color: var(--purple);">
+                <i class="fa-solid fa-puzzle-piece" style="color:var(--purple)"></i>
+                <div>
+                    <h4>3. Esecuzione del Servizio (SOA) & Consistenza (EAI)</h4>
+                    <p>L'ESB invoca il servizio SOA "BillingService" per l'addebito. Contemporaneamente, le logiche EAI si assicurano che i nuovi dati di spedizione del cliente siano propagati e sincronizzati in modo transazionale all'interno del database CRM Salesforce aziendale.</p>
+                </div>
+            </div>
+            <div class="flow-step" style="border-left-color: var(--secondary);">
+                <i class="fa-solid fa-database" style="color:var(--secondary)"></i>
+                <div>
+                    <h4>4. Storicizzazione Analitica (ETL)</h4>
+                    <p>Durante la notte, i job ETL estraggono i dati grezzi degli ordini giornalieri dai database operazionali, rimuovono i dati sensibili non necessari, calcolano i KPI aggregati e caricano i risultati nel Data Lake AWS Redshift per la dashboard del CEO.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>

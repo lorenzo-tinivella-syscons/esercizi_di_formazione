@@ -1,0 +1,47 @@
+movies:
+    movie:
+        - year: "2010"
+        title: Inception
+        director:
+            name: Christopher
+            surname: Nolan
+        cast:
+            actor:
+                - name: Leonardo
+                  surname: DiCaprio
+                - name: Elliot
+                  surname: Page
+        production:
+            - Warner Bros.
+            - Legendary Entertainment
+        length: 2 h 28 min
+
+    movie:    
+        - year: "1961"
+        title: "Breakfast at Tiffany's"
+        director:
+            name: Edwards
+            surname: Blake
+        cast:
+            actor:
+            - name: Audrey
+              surname: Hepburn
+            - name: George
+              surname: Peppard
+        production: Paramount Pictures
+        length: 1h 55 min
+        
+       movie:
+        - year: "2010"
+        title: Shutter Island
+        director:
+            name: Christopher
+            surname: Nolan
+        cast:
+            actor:
+                - name: Leonardo
+                  surname: DiCaprio
+                - name: Mark
+                  surname: Ruffalo
+        production: Paramount Pictures
+        length: 2 h 18 min

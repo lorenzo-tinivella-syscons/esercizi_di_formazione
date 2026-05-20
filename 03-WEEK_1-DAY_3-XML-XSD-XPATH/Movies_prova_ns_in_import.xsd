@@ -1,0 +1,33 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.esempio.it/movies"
+	xmlns:mov="http://www.esempio.it/movies"
+	elementFormDefault="qualified">
+	<xs:import namespace="http://www.esempio.it/person" schemaLocation="PersonType.xsd"
+	xmlns:per="http://www.esempio.it/person"/>
+	
+	<xs:element name="movies">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="movie" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="title" type="xs:string"/>
+							<xs:element name="director" type="per:personType"/>
+							<xs:element name="cast">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="actor" type="per:personType" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="production" type="xs:string" maxOccurs="unbounded"/>
+							<xs:element name="length" type="xs:duration"/>
+						</xs:sequence>
+						<xs:attribute name="year" type="xs:gYear"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mov:movies xmlns:mov="http://www.esempio.it/movies" xmlns:per="http://www.esempio.it/person" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.esempio.it/movies Movies_salami_slice.xsd">
+		<mov:movie year="2010">
+			<mov:title>Inception</mov:title>
+			<mov:director>
+				<per:name>Christopher</per:name>
+				<per:surname>Nolan</per:surname>
+			</mov:director>
+			<mov:cast>
+				<mov:actor>
+					<per:name>Leonardo</per:name>
+					<per:surname>DiCaprio</per:surname>
+				</mov:actor>
+				<mov:actor>
+					<per:name>Elliot</per:name>
+					<per:surname>Page</per:surname>
+				</mov:actor>
+			</mov:cast>
+			<mov:production>Warner Bros.</mov:production>
+			<mov:production>Legendary Entertainment</mov:production>
+			<mov:length>PT2H28M</mov:length>
+		</mov:movie>
+		<mov:movie year="1961">
+			<mov:title>Breakfast at Tiffany's</mov:title>
+			<mov:director>
+				<per:name>Edwards</per:name>
+				<per:surname>Blake</per:surname>
+			</mov:director>
+			<mov:cast>
+				<mov:actor>
+					<per:name>Audrey</per:name>
+					<per:surname>Hepburn</per:surname>
+				</mov:actor>
+				<mov:actor>
+					<per:name>George</per:name>
+					<per:surname>Peppard</per:surname>
+				</mov:actor>
+			</mov:cast>
+			<mov:production>Paramount Pictures</mov:production>
+			<mov:length>PT1H55M</mov:length>
+		</mov:movie>
+		<mov:movie year="2010">
+			<mov:title>Shutter Island</mov:title>
+			<mov:director>
+				<per:name>Martin</per:name>
+				<per:surname>Scorsese</per:surname>
+			</mov:director>
+			<mov:cast>
+				<mov:actor>
+					<per:name>Leonardo</per:name>
+					<per:surname>DiCaprio</per:surname>
+				</mov:actor>
+				<mov:actor>
+					<per:name>Mark</per:name>
+					<per:surname>Ruffalo</per:surname>
+				</mov:actor>
+			</mov:cast>
+			<mov:production>Paramount Pictures</mov:production>
+			<mov:length>PT2H18M</mov:length>
+		</mov:movie>
+	</mov:movies>
