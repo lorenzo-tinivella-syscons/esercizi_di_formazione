@@ -1,0 +1,20 @@
+cd "C:\Users\LTinivella\OneDrive - Impresoft Group\Desktop\Programmi\01-ActiveMQ\apache-activemq-6.2.5-bin\apache-activemq-6.2.5\bin"
+
+.\activemq start
+
+
+CAMBIARE TERMINALE (intanto andare su sito http://localhost:8161 a creare Topic_prova)
+
+cd "C:\Users\LTinivella\OneDrive - Impresoft Group\Desktop\Programmi\01-ActiveMQ\apache-activemq-6.2.5-bin\apache-activemq-6.2.5\bin"
+
+.\activemq consumer --destination topic://Topic_prova --clientId 1
+
+CAMBIARE TERMINALE
+.\activemq consumer --destination topic://Topic_prova --clientId 2
+
+Ora ho due iscritti al Topic (per provare mandiamo nel topic due messaggi, non essendo una queue dovrebbero arrivare 2 messaggi ad ogni iscritto)
+
+CAMBIARE TERMINALE (Invio messaggio dal Topic)
+.\activemq producer --destination topic://Topic_prova --message "Ciao a tutti, io sono Lorenzo" --messageCount 2
+
+(Consumer iscritto al thread prende 1000 messaggi se vuoi cambiarlo usa --messageCount)

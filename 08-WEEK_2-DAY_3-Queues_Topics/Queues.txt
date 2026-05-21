@@ -1,0 +1,13 @@
+cd "C:\Users\LTinivella\OneDrive - Impresoft Group\Desktop\Programmi\01-ActiveMQ\apache-activemq-6.2.5-bin\apache-activemq-6.2.5\bin"
+
+.\activemq start
+
+
+CAMBIARE TERMINALE (intanto andare su sito http://localhost:8161 a creare Queue_prova)
+
+cd "C:\Users\LTinivella\OneDrive - Impresoft Group\Desktop\Programmi\01-ActiveMQ\apache-activemq-6.2.5-bin\apache-activemq-6.2.5\bin"
+
+.\activemq producer --destination queue://Queue_prova --message "Ciao, mi chiamo Lorenzo." --messageCount 1
+
+.\activemq consumer --destination queue://Queue_prova --messageCount 1
+

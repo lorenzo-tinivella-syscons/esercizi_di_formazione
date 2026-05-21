@@ -8,7 +8,8 @@
 
 //mov:movie[not(@year < //mov:movie/@year)]//mov:cast//mov:actor//*
 
-//mov:movie[(substring-before(substring-after(mov:length, 'PT'), 'H') * 60) + substring-before(substring-after(mov:length, 'H'), 'M') > 118]//mov:title
+//mov:movie[(substring-before(substring-after(mov:length, 'PT'), 'H') * 60) + substring-before(substring-after(mov:length, 'H'), 'M') > 118]/mov:title
 
-//mov:actor[not(per:name = //mov:movie[mov:director/per:surname='Nolan' and mov:director/per:name='Christopher']//mov:actor/per:name and per:surname = //mov:movie[mov:director/per:surname='Nolan' and mov:director/per:name='Christopher']//mov:actor/per:surname)]/per:surname
+/mov:movies/mov:movie/mov:cast/mov:actor[not(per:name = ../../[mov:director/per:surname='Nolan' and mov:director/per:name='Christopher']/mov:cast/mov:actor/per:name and per:surname = ../../mov:movie[mov:director/per:surname='Nolan' and mov:director/per:name='Christopher']//mov:actor/per:surname)]/per:surname
 
+/mov:movies/mov:movie[(substring-before(substring-after(mov:length, 'PT'), 'H') * 60) + substring-before(substring-after(mov:length, 'H'), 'M') > 118]/mov:title

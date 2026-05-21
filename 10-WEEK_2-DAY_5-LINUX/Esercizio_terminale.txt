@@ -1,0 +1,63 @@
+APRIRE UBUNTU
+
+-per entrare nella cartella creata da Ubuntu:
+
+cd /mnt
+
+-per entrare su disco C:
+
+cd c
+
+Per capire dove sono:  ls 
+
+-Muoviti come vuoi nelle cartelle, io entro in Documenti_Vari in Desktop; comando unico:
+
+cd /mnt/c/Users/LTinivella/'OneDrive - Impresoft Group'/Desktop/Documenti_Vari
+
+-Creare due cartelle, le chiamo Esercizio1 e Esercizio2:
+
+mkdir Esercizio1
+mkdir Esercizio2
+
+-Entrare in un delle cartelle create 
+
+cd Esercizio1
+
+-Creare file al suo interno
+
+touch 'testo.txt'
+
+-modificarlo:
+
+vi testo.text	i (inserire testo)	ESC (uscire da modalità inserimento) 	:wq (salva ed esci write/quit)
+
+-Visualizzare file
+
+cat testo.txt
+
+-Copiare file di testo nella stessa cartella
+
+cp testo.txt copia_testo.txt
+
+-Muoverlo nell'altra cartella creata (torno indietro ed entro nella cartella)
+
+mv testo.txt ../Esercizio2
+
+-Rinominalo (ovviamente prima mi sposto nella cartella)
+
+cd ../Esercizio2
+
+mv testo.txt nuovo_nome.txt
+
+-Chiamata a pokeAPI con curl
+
+curl https://pokeapi.co/api/v2/pokemon/ditto 
+
+-Vuoi leggerlo bene:
+
+curl https://pokeapi.co/api/v2/pokemon/ditto | jq
+
+
+
+
+
