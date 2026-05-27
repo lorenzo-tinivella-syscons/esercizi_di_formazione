@@ -1,0 +1,19 @@
+TERMINALE DA UBUNTU
+
+ping google.com
+
+traceroute google.com
+
+nslookup google.com
+
+netstat 
+
+-provare ad usare 
+
+netstat -tuln (pulisce output con solo server)
+
+ip a (interfaccia di rete)
+
+ip route (gateway predefinito)
+
+nc -zv google.com 443 (testare se una porta è aperta)
